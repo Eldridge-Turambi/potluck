@@ -9,4 +9,9 @@ RSpec.describe Dish do
   it 'exists' do
     expect(@dish).to be_an_instance_of(Dish)
   end
+
+  it 'has attributes' do
+    expect(@dish.name).to eq('Couscous Salad')
+    expect(@dish.category).to eq(:appetizer)
+  end
 end
