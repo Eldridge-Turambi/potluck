@@ -35,6 +35,9 @@ class Potluck
   end
 
   def ratio(category)
-
+    number_dishes_for_category = @dishes.count do |dish|
+      dish.category == category
+    end
+    (number_dishes_for_category.to_f / @dishes.length.to_f) * 100
   end
 end

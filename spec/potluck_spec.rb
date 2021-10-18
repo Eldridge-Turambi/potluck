@@ -64,6 +64,6 @@ RSpec.describe Potluck do
     @potluck.add_dish(@candy_salad)
     @potluck.add_dish(@bean_dip)
 
-    expect(@potluck.ratio(:appetizer).to eq(50.0))
+    expect(@potluck.ratio(:appetizer)).to eq(50.0)
   end
 end
