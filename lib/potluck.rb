@@ -20,18 +20,27 @@ class Potluck
   end
 
   def menu
-    category_menu_array = {
-      :appetizers => (get_all_from_category(:appetizer).map do |dish|
-        dish.name
-      end).sort!,
-      :entres => (get_all_from_category(:entre).map do |dish|
-        dish.name
-      end).sort!,
-      :desserts => (get_all_from_category(:dessert).map do |dish|
-        dish.name
-      end).sort!
-      }
-      category_menu_array
+    category_menu_array = Hash.new{ |hash, key| hash[key] = []}
+    @dishes.each do |dish|
+      category_menu_array[(dish.category.to_s + 's').to_sym] << dish.name
+    end
+
+    category_menu_array.each do |key, value|
+      category_menu_array[key] = value.sort!
+    end
+
+    # category_menu_array = {
+    #   :appetizers => (get_all_from_category(:appetizer).map do |dish|
+    #     dish.name
+    #   end).sort!,
+    #   :entres => (get_all_from_category(:entre).map do |dish|
+    #     dish.name
+    #   end).sort!,
+    #   :desserts => (get_all_from_category(:dessert).map do |dish|
+    #     dish.name
+    #   end).sort!
+    #   }
+    #   category_menu_array
   end
 
   def ratio(category)
